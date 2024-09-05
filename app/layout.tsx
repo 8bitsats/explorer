@@ -1,59 +1,34 @@
-import './scss/theme-dark.scss';
+// This is the root layout component for your Next.js app.
+// Learn more: https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required
+import { Bricolage_Grotesque } from 'next/font/google'
+import { Space_Mono } from 'next/font/google'
+import { cn } from '@/lib/utils'
+import './globals.css'
 
-import { ClusterModal } from '@components/ClusterModal';
-import { ClusterStatusBanner } from '@components/ClusterStatusButton';
-import { MessageBanner } from '@components/MessageBanner';
-import { Navbar } from '@components/Navbar';
-import { SearchBar } from '@components/SearchBar';
-import { ClusterProvider } from '@providers/cluster';
-import { ScrollAnchorProvider } from '@providers/scroll-anchor';
-import type { Viewport } from 'next';
-import { Rubik } from 'next/font/google';
-import { Metadata } from 'next/types';
+const fontHeading = Bricolage_Grotesque({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-heading',
+})
 
-export const metadata: Metadata = {
-    description: 'Inspect transactions, accounts, blocks, and more on the Solana blockchain',
-    manifest: '/manifest.json',
-    title: 'Explorer | Solana',
-};
+const fontBody = Space_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
+})
 
-export const viewport: Viewport = {
-    initialScale: 1,
-    maximumScale: 1,
-    width: 'device-width',
-};
-
-const rubikFont = Rubik({
-    display: 'swap',
-    subsets: ['latin'],
-    variable: '--explorer-default-font',
-    weight: ['300', '400', '700'],
-});
-
-export default function RootLayout({
-    analytics,
-    children,
-}: {
-    analytics?: React.ReactNode;
-    children: React.ReactNode;
-}) {
-    return (
-        <html lang="en" className={`${rubikFont.variable}`}>
-            <body>
-                <ScrollAnchorProvider>
-                    <ClusterProvider>
-                        <ClusterModal />
-                        <div className="main-content pb-4">
-                            <Navbar />
-                            <MessageBanner />
-                            <ClusterStatusBanner />
-                            <SearchBar />
-                            {children}
-                        </div>
-                    </ClusterProvider>
-                </ScrollAnchorProvider>
-                {analytics}
-            </body>
-        </html>
-    );
+export default function Layout({ children }) {
+  return (
+    <html lang="en">
+      <body 
+        className={cn(
+          'antialiased',
+          fontHeading.variable,
+          fontBody.variable
+        )}
+      >
+        {children}
+      </body>
+    </html>
+  )
 }
