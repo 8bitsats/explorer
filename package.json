@@ -56,7 +56,6 @@
         "superstruct": "^0.15.3",
         "swr": "^2.2.0",
         "tweetnacl": "^1.0.3",
-        "typescript": "5.0.4",
         "use-async-effect": "^2.2.7",
         "use-tab-visibility": "^1.0.9",
         "web3js-experimental": "npm:@solana/web3.js@2.0.0-rc.0"
@@ -80,7 +79,8 @@
         "eslint-plugin-testing-library": "^5.10.3",
         "jest": "29.5.0",
         "jest-environment-jsdom": "29.5.0",
-        "sass": "^1.53.0"
+        "sass": "^1.53.0",
+        "typescript": "5.0.4"
     },
     "prettier": "@solana/prettier-config-solana",
     "browserslist": {
